@@ -1,0 +1,52 @@
+﻿@{
+	Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<h3>알림이 있으면 출력</h3>
+
+<input type="button" id="btnCheck" value="알림이 있는지 확인" />
+<input type="hidden" id="hdnUserId" value="@ViewBag.UserId" />
+
+<!-- Modal -->
+<div class="modal fade" id="myNotification" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">알림확인</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<a href="/MyNotification/MyPage">알림을 확인하시겠습니까?</a>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		$("#btnCheck").click(function() {
+			var userId = parseInt($("#hdnUserId").val(), 10);
+
+			$.get("/api/IsNotification?userId=" + userId)
+				.done(function(data) {
+					if(data)
+					{
+						var myModal = new bootstrap.Modal($("#myNotification"));
+						myModal.show();
+					}
+					else
+					{
+						alert("알림이 없습니다.");
+					}					
+				});
+		});
+	});
+</script>
+

@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[MyNoti]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Timestamp] DATETIMEOFFSET NOT NULL DEFAULT SYSDATETIMEOFFSET(), 
+    [Message] NVARCHAR(MAX) NULL, 
+    [Type] NVARCHAR(50) NULL, 
+    [Url] NVARCHAR(MAX) NULL, 
+    [UserId] INT NOT NULL, 
+    [IsComplete] BIT NOT NULL
+)
