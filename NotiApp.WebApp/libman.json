@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "cdnjs",
+      "library": "toastr.js@2.1.4",
+      "files": [ "toastr.min.js", "toastr.css" ],
+      "destination": "wwwroot/lib/toastr"
+    }
+  ]
+}

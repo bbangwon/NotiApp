@@ -1,10 +1,12 @@
 ﻿@{
 	Layout = null;
 }
-
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/toastr/toastr.css" rel="stylesheet" />
+
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/toastr/toastr.min.js"></script>
 
 <h3>알림이 있으면 출력</h3>
 
@@ -20,11 +22,11 @@
 				.done(function(data) {
 					if(data)
 					{
-						alert("알림이 있습니다.");
+						toastr.success("알림이 있습니다.");
 					}
 					else
 					{
-						alert("알림이 없습니다.");
+						toastr.warning("알림이 없습니다.");
 					}					
 				});
 		});
